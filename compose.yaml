@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: 'postgres:17.4'
+    environment:
+      - 'POSTGRES_DB=funfactstore'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_USER=ffsuser'
+    ports:
+      - '5445:5432'
