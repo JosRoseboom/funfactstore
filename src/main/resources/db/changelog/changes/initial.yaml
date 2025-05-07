@@ -1,0 +1,146 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_app_user_table
+      author: josroseboom
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_appuser
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+            tableName: app_user
+
+  - changeSet:
+      id: create_fun_fact_table
+      author: josroseboom
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_funfact
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: fact
+                  type: VARCHAR(255)
+              - column:
+                  name: explanation
+                  type: VARCHAR(255)
+              - column:
+                  name: admin_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+            tableName: fun_fact
+
+  - changeSet:
+      id: create_purchase_table
+      author: josroseboom
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_purchase
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: fun_fact_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: buyer_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: purchase_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+            tableName: purchase
+
+  - changeSet:
+      id: fk_funfact_appuser
+      author: josroseboom
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: admin_id
+            baseTableName: fun_fact
+            constraintName: FK_FUNFACT_ON_ADMIN
+            referencedColumnNames: id
+            referencedTableName: app_user
+
+  - changeSet:
+      id: fk_funfact_purchase
+      author: josroseboom
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: fun_fact_id
+            baseTableName: purchase
+            constraintName: FK_PURCHASE_ON_FUNFACT
+            referencedColumnNames: id
+            referencedTableName: fun_fact
+
+  - changeSet:
+      id: fk_funfact_buyer
+      author: josroseboom
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: buyer_id
+            baseTableName: purchase
+            constraintName: FK_PURCHASE_ON_BUYER
+            referencedColumnNames: id
+            referencedTableName: app_user
+
+  - changeSet:
+      id: idx_purchase_fun_fact_id
+      author: josroseboom
+      changes:
+        - createIndex:
+            indexName: idx_purchase_fun_fact_id
+            tableName: purchase
+            columns:
+              - column:
+                  name: fun_fact_id
+  - changeSet:
+      id: idx_purchase_buyer_id
+      author: josroseboom
+      changes:
+        - createIndex:
+            indexName: idx_purchase_buyer_id
+            tableName: purchase
+            columns:
+              - column:
+                  name: buyer_id
+
+  - changeSet:
+      id: idx_funfact_admin_id
+      author: josroseboom
+      changes:
+        - createIndex:
+            indexName: idx_funfact_admin_id
+            tableName: fun_fact
+            columns:
+              - column:
+                  name: admin_id
+

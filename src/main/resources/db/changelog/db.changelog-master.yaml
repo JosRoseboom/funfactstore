@@ -1,1 +1,7 @@
 databaseChangeLog:
+  - include:
+      relativeToChangelogFile: true
+      file: changes/initial.yaml
+  - include:
+      relativeToChangelogFile: true
+      file: changes/seed.yaml

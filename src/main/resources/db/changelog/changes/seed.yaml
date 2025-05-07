@@ -1,0 +1,144 @@
+databaseChangeLog:
+  - changeSet:
+      id: seed-app-user
+      author: josroseboom
+      changes:
+        - insert:
+            tableName: app_user
+            columns:
+              - column: { name: id, value: 1 }
+              - column: { name: username, value: 'admin' }
+              - column: { name: email, value: 'jos@easingyou.com' }
+        - insert:
+            tableName: app_user
+            columns:
+              - column: { name: id, value: 2 }
+              - column: { name: username, value: 'buyer' }
+              - column: { name: email, value: 'john@nasa.com' }
+
+  - changeSet:
+      id: seed-fun-facts
+      author: josroseboom
+      changes:
+        - insert:
+            tableName: fun_fact
+            columns:
+              - column: { name: id, value: 1 }
+              - column: { name: fact, value: 'Octopuses have three hearts' }
+              - column: { name: explanation, value: 'Two pump blood to the gills, one pumps it to the rest of the body' }
+              - column: { name: admin_id, value: 1 }
+        - insert:
+            tableName: fun_fact
+            columns:
+              - column: { name: id, value: 2 }
+              - column: { name: fact, value: 'Bananas are berries, but strawberries are not' }
+              - column: { name: explanation, value: 'Botanically, berries must have seeds inside and come from a single flower ovary' }
+              - column: { name: admin_id, value: 1 }
+        - insert:
+            tableName: fun_fact
+            columns:
+              - column: { name: id, value: 3 }
+              - column: { name: fact, value: 'Honey never spoils' }
+              - column: { name: explanation, value: 'Jars of honey found in ancient Egyptian tombs are still edible' }
+              - column: { name: admin_id, value: 1 }
+        - insert:
+            tableName: fun_fact
+            columns:
+              - column: { name: id, value: 4 }
+              - column: { name: fact, value: 'A day on Venus is longer than its year' }
+              - column: { name: explanation, value: 'Venus takes 243 Earth days to rotate once, but only 225 to orbit the Sun' }
+              - column: { name: admin_id, value: 1 }
+        - insert:
+            tableName: fun_fact
+            columns:
+              - column: { name: id, value: 5 }
+              - column: { name: fact, value: 'Wombat poop is cube-shaped' }
+              - column: { name: explanation, value: 'This shape prevents it from rolling away and helps mark territory' }
+              - column: { name: admin_id, value: 1 }
+        - insert:
+            tableName: fun_fact
+            columns:
+              - column: { name: id, value: 6 }
+              - column: { name: fact, value: 'Sharks predate trees' }
+              - column: { name: explanation, value: 'Sharks have existed for about 400 million years; trees for only 350 million' }
+              - column: { name: admin_id, value: 1 }
+        - insert:
+            tableName: fun_fact
+            columns:
+              - column: { name: id, value: 7 }
+              - column: { name: fact, value: 'Sloths can hold their breath longer than dolphins' }
+              - column: { name: explanation, value: 'Sloths can slow their heart rate and hold their breath for up to 40 minutes' }
+              - column: { name: admin_id, value: 1 }
+        - insert:
+            tableName: fun_fact
+            columns:
+              - column: { name: id, value: 8 }
+              - column: { name: fact, value: 'Hot water can freeze faster than cold water' }
+              - column: { name: explanation, value: 'Known as the Mpemba effect, though not fully understood' }
+              - column: { name: admin_id, value: 1 }
+        - insert:
+            tableName: fun_fact
+            columns:
+              - column: { name: id, value: 9 }
+              - column: { name: fact, value: 'Pineapples take about 2 years to grow' }
+              - column: { name: explanation, value: 'Each plant produces only one pineapple at a time' }
+              - column: { name: admin_id, value: 1 }
+        - insert:
+            tableName: fun_fact
+            columns:
+              - column: { name: id, value: 10 }
+              - column: { name: fact, value: 'There are more stars in the universe than grains of sand on Earth' }
+              - column: { name: explanation, value: 'Estimated at ~1e24 stars vs. ~1e22 grains of sand' }
+              - column: { name: admin_id, value: 1 }
+
+  - changeSet:
+      id: seed-purchases
+      author: josroseboom
+      changes:
+        - insert:
+            tableName: purchase
+            columns:
+              - column: { name: id, value: 1 }
+              - column: { name: fun_fact_id, value: 2 }
+              - column: { name: buyer_id, value: 2 }
+              - column: { name: purchase_date, valueDate: '2024-05-01T10:01:00' }
+        - insert:
+            tableName: purchase
+            columns:
+              - column: { name: id, value: 2 }
+              - column: { name: fun_fact_id, value: 4 }
+              - column: { name: buyer_id, value: 2 }
+              - column: { name: purchase_date, valueDate: '2024-05-01T10:02:00' }
+        - insert:
+            tableName: purchase
+            columns:
+              - column: { name: id, value: 3 }
+              - column: { name: fun_fact_id, value: 5 }
+              - column: { name: buyer_id, value: 2 }
+              - column: { name: purchase_date, valueDate: '2024-05-01T10:03:00' }
+        - insert:
+            tableName: purchase
+            columns:
+              - column: { name: id, value: 4 }
+              - column: { name: fun_fact_id, value: 7 }
+              - column: { name: buyer_id, value: 2 }
+              - column: { name: purchase_date, valueDate: '2024-05-01T10:04:00' }
+        - insert:
+            tableName: purchase
+            columns:
+              - column: { name: id, value: 5 }
+              - column: { name: fun_fact_id, value: 10 }
+              - column: { name: buyer_id, value: 2 }
+              - column: { name: purchase_date, valueDate: '2024-05-01T10:05:00' }
+
+  - changeSet:
+      id: reset-sequences
+      author: josroseboom
+      changes:
+        - sql:
+            dbms: postgresql
+            splitStatements: false
+            sql: |
+              SELECT setval('app_user_id_seq', (SELECT MAX(id) FROM app_user));
+              SELECT setval('fun_fact_id_seq', (SELECT MAX(id) FROM fun_fact));
+              SELECT setval('purchase_id_seq', (SELECT MAX(id) FROM purchase));
