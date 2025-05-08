@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fun Facts</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fun Facts</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Purchase Date</th>
+                <th>Support Email</th>
+                <th>Text</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="fact : ${facts}">
+                <td th:text="${#temporals.format(fact.purchaseDate, 'yyyy-MM-dd HH:mm')}"></td>
+                <td th:text="${fact.supportEmail}"></td>
+                <td th:text="${fact.text}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

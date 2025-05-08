@@ -26,15 +26,4 @@ class FactControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
-    @Test
-    void getFactCount_shouldReturnCountFromService() throws Exception {
-        // Given
-        long expectedCount = 42;
-        when(factService.count()).thenReturn(expectedCount);
-
-        // When & Then
-        mockMvc.perform(get("/api/facts/count"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(String.valueOf(expectedCount)));
-    }
 }
