@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <title>Fun Facts</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
         th, td {
             border: 1px solid #ddd;
@@ -24,26 +35,60 @@
         tr:hover {
             background-color: #f1f1f1;
         }
+        .facts-table {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .nav-bar {
+            background-color: #333;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .nav-bar a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        .nav-bar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .nav-bar a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <h1>Fun Facts</h1>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Purchase Date</th>
-                <th>Support Email</th>
-                <th>Text</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="fact : ${facts}">
-                <td th:text="${#temporals.format(fact.purchaseDate, 'yyyy-MM-dd HH:mm')}"></td>
-                <td th:text="${fact.supportEmail}"></td>
-                <td th:text="${fact.text}"></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="nav-bar">
+        <a class="active" th:href="@{'/' + ${username}}">My Fun Facts</a>
+        <a th:href="@{'/shop/' + ${username}}">Shop</a>
+    </div>
+
+    <div class="container">
+        <h1>Fun Facts</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Purchase Date</th>
+                    <th>Support Email</th>
+                    <th>Text</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="fact : ${facts}">
+                    <td th:text="${#temporals.format(fact.purchaseDate, 'yyyy-MM-dd H:mm')}"></td>
+                    <td th:text="${fact.supportEmail}"></td>
+                    <td th:text="${fact.text}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

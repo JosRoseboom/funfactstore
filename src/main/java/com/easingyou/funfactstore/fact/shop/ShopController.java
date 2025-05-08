@@ -31,22 +31,22 @@ class ShopController {
 
         model.addAttribute("username", username);
         model.addAttribute("lastPurchaseDate", shopService.getLastPurchaseDate(username).orElse(null));
-        
+
         return "shop";
     }
 
-    @PostMapping
+    @PostMapping("/{username}")
     String processPayment(
-            @RequestParam String username,
+            @PathVariable String username,
             @RequestParam String paymentMethod,
             Model model) {
-        
-        // Here you would process the payment and create a new purchase
-        // For now, we'll just acknowledge the payment method
-        model.addAttribute("username", username);
-        model.addAttribute("paymentMethod", paymentMethod);
+
+				ZonedDateTime purchaseDate = shopService.purchaseFunFact(username);
+
+				model.addAttribute("username", username);
+				model.addAttribute("lastPurchaseDate", purchaseDate);
         model.addAttribute("paymentProcessed", true);
-        
+
         return "shop";
     }
 }

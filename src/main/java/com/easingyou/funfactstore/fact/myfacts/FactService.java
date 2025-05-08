@@ -19,7 +19,7 @@ class FactService {
 
 	List<FactDTO> findMyFacts(String username) {
 		return purchaseRepo.findByBuyer_Username(username).stream()
-				.map(purchase -> new FactDTO(purchase.getPurchaseDate(), purchase.getFunFact().getFact(), purchase.getFunFact().getAdmin().getEmail()))
+				.map(purchase -> new FactDTO(purchase.getPurchaseDateCurrentZone(), purchase.getFunFact().getFact(), purchase.getFunFact().getAdmin().getEmail()))
 				.toList();
 	}
 }

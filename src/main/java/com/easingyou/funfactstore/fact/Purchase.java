@@ -1,5 +1,6 @@
 package com.easingyou.funfactstore.fact;
 
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 import jakarta.persistence.Column;
@@ -20,7 +21,19 @@ public class Purchase extends BaseEntity{
 	@JoinColumn(nullable = false)
 	private AppUser buyer;
 
-	@Getter
 	@Column(nullable = false)
 	private ZonedDateTime purchaseDate;
+
+	public ZonedDateTime getPurchaseDateCurrentZone() {
+		return purchaseDate.withZoneSameInstant(ZoneId.systemDefault());
+	}
+
+	// JPA
+	protected Purchase() {}
+
+	public Purchase(FunFact funFact, AppUser buyer) {
+		this.funFact = funFact;
+		this.buyer = buyer;
+		this.purchaseDate = ZonedDateTime.now();
+	}
 }

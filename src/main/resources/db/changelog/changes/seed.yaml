@@ -8,13 +8,13 @@ databaseChangeLog:
             columns:
               - column: { name: id, value: 1 }
               - column: { name: username, value: 'admin' }
-              - column: { name: email, value: 'jos@easingyou.com' }
+              - column: { name: email, value: 'ceo@easingyou.com' }
         - insert:
             tableName: app_user
             columns:
               - column: { name: id, value: 2 }
-              - column: { name: username, value: 'buyer' }
-              - column: { name: email, value: 'john@nasa.com' }
+              - column: { name: username, value: 'jos' }
+              - column: { name: email, value: 'jos@easingyou.com' }
 
   - changeSet:
       id: seed-fun-facts
@@ -99,37 +99,16 @@ databaseChangeLog:
             tableName: purchase
             columns:
               - column: { name: id, value: 1 }
-              - column: { name: fun_fact_id, value: 2 }
+              - column: { name: fun_fact_id, value: 1 }
               - column: { name: buyer_id, value: 2 }
               - column: { name: purchase_date, valueDate: '2024-05-01T10:01:00' }
         - insert:
             tableName: purchase
             columns:
-              - column: { name: id, value: 2 }
+              - column: { name: id, value: 4 }
               - column: { name: fun_fact_id, value: 4 }
               - column: { name: buyer_id, value: 2 }
-              - column: { name: purchase_date, valueDate: '2024-05-01T10:02:00' }
-        - insert:
-            tableName: purchase
-            columns:
-              - column: { name: id, value: 3 }
-              - column: { name: fun_fact_id, value: 5 }
-              - column: { name: buyer_id, value: 2 }
-              - column: { name: purchase_date, valueDate: '2024-05-01T10:03:00' }
-        - insert:
-            tableName: purchase
-            columns:
-              - column: { name: id, value: 4 }
-              - column: { name: fun_fact_id, value: 7 }
-              - column: { name: buyer_id, value: 2 }
               - column: { name: purchase_date, valueDate: '2024-05-01T10:04:00' }
-        - insert:
-            tableName: purchase
-            columns:
-              - column: { name: id, value: 5 }
-              - column: { name: fun_fact_id, value: 10 }
-              - column: { name: buyer_id, value: 2 }
-              - column: { name: purchase_date, valueDate: '2024-05-01T10:05:00' }
 
   - changeSet:
       id: reset-sequences

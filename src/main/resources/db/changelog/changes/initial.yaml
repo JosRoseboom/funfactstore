@@ -74,7 +74,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: purchase_date
-                  type: timestamp
+                  type: timestamptz
                   constraints:
                     nullable: false
             tableName: purchase
