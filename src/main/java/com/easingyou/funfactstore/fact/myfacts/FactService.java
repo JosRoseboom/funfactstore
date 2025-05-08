@@ -1,26 +1,25 @@
-package com.easingyou.funfactstore.fact;
+package com.easingyou.funfactstore.fact.myfacts;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.easingyou.funfactstore.fact.PurchaseRepo;
+
 @Service
 @Transactional(readOnly = true)
-public class FactService {
+class FactService {
 
-	private final AppUserRepo appUserRepo;
+	private final PurchaseRepo purchaseRepo;
 
-	FactService(AppUserRepo appUserRepo) {
-		this.appUserRepo = appUserRepo;
+	FactService(PurchaseRepo purchaseRepo) {
+		this.purchaseRepo = purchaseRepo;
 	}
 
 	List<FactDTO> findMyFacts(String username) {
-		AppUser user = appUserRepo.findByUsername(username).orElseThrow();
-
-		return user.getPurchases().stream()
+		return purchaseRepo.findByBuyer_Username(username).stream()
 				.map(purchase -> new FactDTO(purchase.getPurchaseDate(), purchase.getFunFact().getFact(), purchase.getFunFact().getAdmin().getEmail()))
 				.toList();
-
 	}
 }

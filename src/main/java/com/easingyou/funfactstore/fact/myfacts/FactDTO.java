@@ -1,4 +1,4 @@
-package com.easingyou.funfactstore.fact;
+package com.easingyou.funfactstore.fact.myfacts;
 
 import java.time.ZonedDateTime;
 

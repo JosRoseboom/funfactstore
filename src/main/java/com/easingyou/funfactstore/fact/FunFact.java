@@ -6,7 +6,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 
 @Entity
-class FunFact extends BaseEntity {
+public class FunFact extends BaseEntity {
 
 	@Getter
 	private String fact;

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fun Facts Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .purchase-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .payment-form {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .radio-option {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        .success-message {
+            color: #4CAF50;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fun Facts Shop</h1>
+        
+        <div class="purchase-info">
+            <h2>Your Purchase Information</h2>
+            <p th:if="${lastPurchaseDate}">
+                Last purchase date: <span th:text="${#temporals.format(lastPurchaseDate, 'yyyy-MM-dd HH:mm')}"></span>
+            </p>
+            <p th:unless="${lastPurchaseDate}">You haven't made any purchases yet.</p>
+        </div>
+        
+        <div class="payment-form">
+            <h2>Select Payment Method</h2>
+            
+            <div th:if="${paymentProcessed}" class="success-message">
+                <p>Thank you for your payment using <span th:text="${paymentMethod}"></span>!</p>
+            </div>
+            
+            <form th:unless="${paymentProcessed}" th:action="@{/shop}" method="post">
+                <input type="hidden" name="username" th:value="${username}">
+                
+                <div class="form-group">
+                    <label>Payment Method:</label>
+                    <div class="radio-option">
+                        <input type="radio" id="creditCard" name="paymentMethod" value="credit card" required>
+                        <label for="creditCard">Credit Card</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="cash" name="paymentMethod" value="cash">
+                        <label for="cash">Cash</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="funFacts" name="paymentMethod" value="fun facts">
+                        <label for="funFacts">I don't have money but will deliver 2 as-good-as-new fun facts as compensation</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-button">Submit Payment</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

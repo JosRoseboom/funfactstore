@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 
 @Entity
-class Purchase extends BaseEntity{
+public class Purchase extends BaseEntity{
 
 	@Getter
 	@ManyToOne

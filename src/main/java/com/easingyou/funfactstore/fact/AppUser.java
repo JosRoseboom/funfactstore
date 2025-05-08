@@ -7,7 +7,7 @@ import jakarta.persistence.OneToMany;
 import lombok.Getter;
 
 @Entity
-class AppUser extends BaseEntity{
+public class AppUser extends BaseEntity{
 
 	private String username;
 	@Getter
