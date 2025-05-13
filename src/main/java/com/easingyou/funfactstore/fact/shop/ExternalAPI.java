@@ -1,14 +1,14 @@
-package com.easingyou.funfactstore.fact;
+package com.easingyou.funfactstore.fact.shop;
 
 import org.springframework.stereotype.Service;
 
 @Service
-class UserValidator {
+class ExternalAPI {
 
-	boolean isThisACriminal(long userId){
+	boolean isThisACriminal(String identifier){
 
 		try {
-			Thread.sleep(100L);
+			Thread.sleep(200L);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}

@@ -1,54 +1,42 @@
 package com.easingyou.funfactstore.fact.shop;
 
 import java.time.ZonedDateTime;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.easingyou.funfactstore.fact.AppUser;
-import com.easingyou.funfactstore.fact.AppUserRepo;
-import com.easingyou.funfactstore.fact.FunFact;
-import com.easingyou.funfactstore.fact.FunFactRepo;
-import com.easingyou.funfactstore.fact.Purchase;
 import com.easingyou.funfactstore.fact.PurchaseRepo;
 
 @Service
-@Transactional(readOnly = true)
 class ShopService {
+	private final Logger log = LoggerFactory.getLogger(ShopService.class);
+
 	private final PurchaseRepo purchaseRepo;
-	private final AppUserRepo appUserRepo;
-	private final FunFactRepo funFactRepo;
+	private final ExternalAPI externalAPI;
 
-	ShopService(PurchaseRepo purchaseRepo, AppUserRepo appUserRepo, FunFactRepo funFactRepo) {
+	ShopService(PurchaseRepo purchaseRepo, ExternalAPI externalAPI) {
 		this.purchaseRepo = purchaseRepo;
-		this.appUserRepo = appUserRepo;
-		this.funFactRepo = funFactRepo;
-	}
-
-	Optional<ZonedDateTime> getLastPurchaseDate(String username) {
-
-		// Find the last purchase date
-		return purchaseRepo.findByBuyer_Username(username).stream()
-				.map(Purchase::getPurchaseDateCurrentZone)
-				.max(Comparator.naturalOrder());
+		this.externalAPI = externalAPI;
 	}
 
 	@Transactional
-	ZonedDateTime purchaseFunFact(String username) {
-		AppUser buyer = appUserRepo.findByUsername(username).orElseThrow();
-		final List<Long> alreadyPurchasedFFIds = buyer.getPurchases().stream()
-				.map(Purchase::getFunFact)
-				.map(FunFact::getId)
-				.toList();
-		FunFact funFact = funFactRepo.findFirstByIdNotIn(alreadyPurchasedFFIds)
-				.orElseThrow(() -> new RuntimeException("Give this legend its money back: no more fun facts to purchase"));
+	Optional<ZonedDateTime> getLastPurchaseDate(String username) {
 
-		final Purchase purchase = new Purchase(funFact, buyer);
-		purchaseRepo.save(purchase);
+		log.info("Check if criminal");
+		if (externalAPI.isThisACriminal(username)){
+			throw new RuntimeException("Criminal entered the shop!!!!!");
+		}
 
-		return purchase.getPurchaseDateCurrentZone();
+		log.info("User {} exists and is not a criminal. Now look for last purchase date", username);
+
+		// Find the last purchase date
+		final Optional<ZonedDateTime> lastPurchase = purchaseRepo.findLastPurchaseDateByBuyer_Username(username);
+
+		log.info("Last purchase date for user {} is {}", username, lastPurchase);
+		return lastPurchase;
 	}
+
 }
