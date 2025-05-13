@@ -15,4 +15,12 @@ class ExternalAPI {
 
 		return false;
 	}
+
+	public void sendEmailToCEO() {
+		try {
+			Thread.sleep(250L);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

@@ -19,10 +19,12 @@ class ShopController {
 
   private final ShopService shopService;
 	private final PurchaseService purchaseService;
+	private final ExternalAPI externalAPI;
 
-	ShopController(ShopService shopService, PurchaseService purchaseService) {
+	ShopController(ShopService shopService, PurchaseService purchaseService, ExternalAPI externalAPI) {
 		this.shopService = shopService;
 		this.purchaseService = purchaseService;
+		this.externalAPI = externalAPI;
 	}
 
 		@GetMapping("/{username}")
@@ -33,7 +35,8 @@ class ShopController {
       model.addAttribute("username", username);
       model.addAttribute("lastPurchaseDate", shopService.getLastPurchaseDate(username).orElse(null));
 
-
+			log.info("Send email to the ceo to celebrate a potential customer!!!");
+			externalAPI.sendEmailToCEO();
 			log.info("End of shopcontroller, entering shop for user {}", username);
 
       return "shop";
