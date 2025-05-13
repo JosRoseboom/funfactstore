@@ -7,7 +7,7 @@ import io.hypersistence.optimizer.HypersistenceOptimizer;
 import io.hypersistence.optimizer.core.config.JpaConfig;
 import jakarta.persistence.EntityManagerFactory;
 
-@Configuration
+//@Configuration
 public class HypersistenceConfiguration {
 
     @Bean

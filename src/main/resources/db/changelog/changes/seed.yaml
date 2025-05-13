@@ -15,6 +15,12 @@ databaseChangeLog:
               - column: { name: id, value: 2 }
               - column: { name: username, value: 'jos' }
               - column: { name: email, value: 'jos@easingyou.com' }
+        - insert:
+            tableName: app_user
+            columns:
+              - column: { name: id, value: 3 }
+              - column: { name: username, value: 'mj' }
+              - column: { name: email, value: 'mj@easingyou.com' }
 
   - changeSet:
       id: seed-fun-facts
@@ -105,10 +111,31 @@ databaseChangeLog:
         - insert:
             tableName: purchase
             columns:
-              - column: { name: id, value: 4 }
+              - column: { name: id, value: 2 }
               - column: { name: fun_fact_id, value: 4 }
               - column: { name: buyer_id, value: 2 }
               - column: { name: purchase_date, valueDate: '2024-05-01T10:04:00' }
+        - insert:
+            tableName: purchase
+            columns:
+              - column: { name: id, value: 3 }
+              - column: { name: fun_fact_id, value: 2 }
+              - column: { name: buyer_id, value: 3 }
+              - column: { name: purchase_date, valueDate: '2024-05-02T10:04:00' }
+        - insert:
+            tableName: purchase
+            columns:
+              - column: { name: id, value: 4 }
+              - column: { name: fun_fact_id, value: 3 }
+              - column: { name: buyer_id, value: 3 }
+              - column: { name: purchase_date, valueDate: '2024-05-02T10:07:00' }
+        - insert:
+            tableName: purchase
+            columns:
+              - column: { name: id, value: 5 }
+              - column: { name: fun_fact_id, value: 6 }
+              - column: { name: buyer_id, value: 3 }
+              - column: { name: purchase_date, valueDate: '2024-05-03T10:07:00' }
 
   - changeSet:
       id: reset-sequences

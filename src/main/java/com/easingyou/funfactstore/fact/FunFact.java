@@ -11,6 +11,7 @@ public class FunFact extends BaseEntity {
 	@Getter
 	private String fact;
 
+	@Getter
 	private String explanation;
 
 	@Getter
