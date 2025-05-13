@@ -30,7 +30,7 @@ class ShopService {
 			throw new RuntimeException("Criminal entered the shop!!!!!");
 		}
 
-		log.info("User {} exists and is not a criminal. Now look for last purchase date", username);
+		log.info("User {} is not a criminal. Now look for last purchase date", username);
 
 		// Find the last purchase date
 		final Optional<ZonedDateTime> lastPurchase = purchaseRepo.findLastPurchaseDateByBuyer_Username(username);
