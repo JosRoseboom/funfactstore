@@ -16,9 +16,13 @@ databaseChangeLog:
               - column:
                   name: username
                   type: VARCHAR(255)
+                  constraints:
+                    nullable: false
               - column:
                   name: email
                   type: VARCHAR(255)
+                  constraints:
+                    nullable: false
             tableName: app_user
 
   - changeSet:
@@ -38,6 +42,8 @@ databaseChangeLog:
               - column:
                   name: fact
                   type: VARCHAR(255)
+                  constraints:
+                    nullable: false
               - column:
                   name: explanation
                   type: VARCHAR(255)

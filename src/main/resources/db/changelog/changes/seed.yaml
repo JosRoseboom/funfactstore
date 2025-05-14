@@ -7,18 +7,30 @@ databaseChangeLog:
             tableName: app_user
             columns:
               - column: { name: id, value: 1 }
-              - column: { name: username, value: 'admin' }
+              - column: { name: username, value: 'ceo' }
               - column: { name: email, value: 'ceo@easingyou.com' }
         - insert:
             tableName: app_user
             columns:
               - column: { name: id, value: 2 }
+              - column: { name: username, value: 'coo' }
+              - column: { name: email, value: 'coo@easingyou.com' }
+        - insert:
+            tableName: app_user
+            columns:
+              - column: { name: id, value: 3 }
+              - column: { name: username, value: 'cto' }
+              - column: { name: email, value: 'cto@easingyou.com' }
+        - insert:
+            tableName: app_user
+            columns:
+              - column: { name: id, value: 4 }
               - column: { name: username, value: 'jos' }
               - column: { name: email, value: 'jos@easingyou.com' }
         - insert:
             tableName: app_user
             columns:
-              - column: { name: id, value: 3 }
+              - column: { name: id, value: 5 }
               - column: { name: username, value: 'mj' }
               - column: { name: email, value: 'mj@easingyou.com' }
 
@@ -60,42 +72,42 @@ databaseChangeLog:
               - column: { name: id, value: 5 }
               - column: { name: fact, value: 'Wombat poop is cube-shaped' }
               - column: { name: explanation, value: 'This shape prevents it from rolling away and helps mark territory' }
-              - column: { name: admin_id, value: 1 }
+              - column: { name: admin_id, value: 2 }
         - insert:
             tableName: fun_fact
             columns:
               - column: { name: id, value: 6 }
               - column: { name: fact, value: 'Sharks predate trees' }
               - column: { name: explanation, value: 'Sharks have existed for about 400 million years; trees for only 350 million' }
-              - column: { name: admin_id, value: 1 }
+              - column: { name: admin_id, value: 2 }
         - insert:
             tableName: fun_fact
             columns:
               - column: { name: id, value: 7 }
               - column: { name: fact, value: 'Sloths can hold their breath longer than dolphins' }
               - column: { name: explanation, value: 'Sloths can slow their heart rate and hold their breath for up to 40 minutes' }
-              - column: { name: admin_id, value: 1 }
+              - column: { name: admin_id, value: 2 }
         - insert:
             tableName: fun_fact
             columns:
               - column: { name: id, value: 8 }
               - column: { name: fact, value: 'Hot water can freeze faster than cold water' }
               - column: { name: explanation, value: 'Known as the Mpemba effect, though not fully understood' }
-              - column: { name: admin_id, value: 1 }
+              - column: { name: admin_id, value: 3 }
         - insert:
             tableName: fun_fact
             columns:
               - column: { name: id, value: 9 }
               - column: { name: fact, value: 'Pineapples take about 2 years to grow' }
               - column: { name: explanation, value: 'Each plant produces only one pineapple at a time' }
-              - column: { name: admin_id, value: 1 }
+              - column: { name: admin_id, value: 3 }
         - insert:
             tableName: fun_fact
             columns:
               - column: { name: id, value: 10 }
               - column: { name: fact, value: 'There are more stars in the universe than grains of sand on Earth' }
               - column: { name: explanation, value: 'Estimated at ~1e24 stars vs. ~1e22 grains of sand' }
-              - column: { name: admin_id, value: 1 }
+              - column: { name: admin_id, value: 3 }
 
   - changeSet:
       id: seed-purchases
@@ -106,35 +118,35 @@ databaseChangeLog:
             columns:
               - column: { name: id, value: 1 }
               - column: { name: fun_fact_id, value: 1 }
-              - column: { name: buyer_id, value: 2 }
+              - column: { name: buyer_id, value: 4 }
               - column: { name: purchase_date, valueDate: '2024-05-01T10:01:00' }
         - insert:
             tableName: purchase
             columns:
               - column: { name: id, value: 2 }
               - column: { name: fun_fact_id, value: 4 }
-              - column: { name: buyer_id, value: 2 }
+              - column: { name: buyer_id, value: 4 }
               - column: { name: purchase_date, valueDate: '2024-05-01T10:04:00' }
         - insert:
             tableName: purchase
             columns:
               - column: { name: id, value: 3 }
               - column: { name: fun_fact_id, value: 2 }
-              - column: { name: buyer_id, value: 3 }
+              - column: { name: buyer_id, value: 5 }
               - column: { name: purchase_date, valueDate: '2024-05-02T10:04:00' }
         - insert:
             tableName: purchase
             columns:
               - column: { name: id, value: 4 }
               - column: { name: fun_fact_id, value: 3 }
-              - column: { name: buyer_id, value: 3 }
+              - column: { name: buyer_id, value: 5 }
               - column: { name: purchase_date, valueDate: '2024-05-02T10:07:00' }
         - insert:
             tableName: purchase
             columns:
               - column: { name: id, value: 5 }
               - column: { name: fun_fact_id, value: 6 }
-              - column: { name: buyer_id, value: 3 }
+              - column: { name: buyer_id, value: 5 }
               - column: { name: purchase_date, valueDate: '2024-05-03T10:07:00' }
 
   - changeSet:
