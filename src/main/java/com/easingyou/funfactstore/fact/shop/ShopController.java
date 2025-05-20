@@ -1,6 +1,6 @@
 package com.easingyou.funfactstore.fact.shop;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +47,7 @@ class ShopController {
             @RequestParam String paymentMethod,
             Model model) {
 
-				ZonedDateTime purchaseDate = purchaseService.purchaseFunFact(username);
+				LocalDateTime purchaseDate = purchaseService.purchaseFunFact(username);
 
 				model.addAttribute("username", username);
 				model.addAttribute("lastPurchaseDate", purchaseDate);

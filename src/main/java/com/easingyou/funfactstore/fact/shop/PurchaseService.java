@@ -1,6 +1,6 @@
 package com.easingyou.funfactstore.fact.shop;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ class PurchaseService {
 	}
 
 	@Transactional
-	ZonedDateTime purchaseFunFact(String username) {
+	LocalDateTime purchaseFunFact(String username) {
 		AppUser buyer = appUserRepo.findByUsername(username).orElseThrow();
 		final List<Long> alreadyPurchasedFFIds = buyer.getPurchases().stream()
 				.map(Purchase::getFunFact)
@@ -38,6 +38,6 @@ class PurchaseService {
 		final Purchase purchase = new Purchase(funFact, buyer);
 		purchaseRepo.save(purchase);
 
-		return purchase.getPurchaseDateCurrentZone();
+		return purchase.getPurchaseDate();
 	}
 }

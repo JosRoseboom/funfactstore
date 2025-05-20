@@ -27,7 +27,7 @@ class FactService {
 		log.info("Found {} facts for user {}", puchasesForUser.size(), username);
 
 		final List<FactDTO> factDTOS = puchasesForUser.stream()
-				.map(purchase -> new FactDTO(purchase.getPurchaseDateCurrentZone(), purchase.getFunFact().getFact(), purchase.getFunFact().getAdmin().getEmail()))
+				.map(purchase -> new FactDTO(purchase.getPurchaseDate(), purchase.getFunFact().getFact(), purchase.getFunFact().getAdmin().getEmail()))
 				.toList();
 
 		log.info("Mapped entities to dtos. Returning {}", factDTOS);

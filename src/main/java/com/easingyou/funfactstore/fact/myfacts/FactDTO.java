@@ -1,6 +1,7 @@
 package com.easingyou.funfactstore.fact.myfacts;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
-record FactDTO(ZonedDateTime purchaseDate, String text, String supportEmail) {
+record FactDTO(LocalDateTime purchaseDate, String text, String supportEmail) {
+
 }
