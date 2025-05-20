@@ -104,8 +104,8 @@
 </head>
 <body>
     <div class="nav-bar">
-        <a th:href="@{'/' + ${username}}">My Fun Facts</a>
-        <a class="active" th:href="@{'/shop/' + ${username}}">Shop</a>
+        <a th:href="@{'/?username=' + ${username}}">My Fun Facts</a>
+        <a class="active" th:href="@{'/shop?username=' + ${username}}">Shop</a>
     </div>
 
     <div class="container">
@@ -127,7 +127,7 @@
                 <p>Please find your new fun fact added to your balance!</p>
             </div>
 
-            <form th:unless="${paymentProcessed}" th:action="@{'/shop/' + ${username}}" method="post">
+            <form th:unless="${paymentProcessed}" th:action="@{'/shop?username=' + ${username}}" method="post">
 
                 <div class="form-group">
                     <label>Payment Method:</label>

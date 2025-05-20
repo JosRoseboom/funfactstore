@@ -67,8 +67,8 @@
 </head>
 <body>
     <div class="nav-bar">
-        <a class="active" th:href="@{'/' + ${username}}">My Fun Facts</a>
-        <a th:href="@{'/shop/' + ${username}}">Shop</a>
+        <a class="active" th:href="@{'/?username=' + ${username}}">My Fun Facts</a>
+        <a th:href="@{'/shop?username=' + ${username}}">Shop</a>
     </div>
 
     <div class="container">
