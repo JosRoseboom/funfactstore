@@ -11,7 +11,6 @@ import com.easingyou.funfactstore.fact.AppUserRepo;
 import com.easingyou.funfactstore.fact.FunFact;
 import com.easingyou.funfactstore.fact.FunFactRepo;
 import com.easingyou.funfactstore.fact.Purchase;
-import com.easingyou.funfactstore.fact.PurchaseRepo;
 
 @Service
 class PurchaseService {

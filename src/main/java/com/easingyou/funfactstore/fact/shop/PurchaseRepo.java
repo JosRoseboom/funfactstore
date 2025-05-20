@@ -1,15 +1,14 @@
-package com.easingyou.funfactstore.fact;
+package com.easingyou.funfactstore.fact.shop;
 
 import java.time.ZonedDateTime;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface PurchaseRepo extends JpaRepository<Purchase, Long> {
+import com.easingyou.funfactstore.fact.Purchase;
 
-	List<Purchase> findByBuyer_Username(String username);
+interface PurchaseRepo extends JpaRepository<Purchase, Long> {
 
 	@Query("""
 			select max(p.purchaseDate) from Purchase p
