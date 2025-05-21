@@ -46,4 +46,11 @@ public class BaseEntity{
 	private Class<?> getEffectiveClass() {
 		return this instanceof HibernateProxy hibernateProxy ? hibernateProxy.getHibernateLazyInitializer().getPersistentClass() : getClass();
 	}
+
+	// when final, we can call toString() on a proxied entity without instantiating it
+	//
+ 	// when final is dropped, it will (try to) instantiate a proxy when called on a proxy
+	public final String toString() {
+		return getEffectiveClass().getSimpleName() + "[id=" + getId() + "]";
+	}
 }

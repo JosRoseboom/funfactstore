@@ -14,7 +14,7 @@ import com.easingyou.funfactstore.TestcontainersConfiguration;
 @Import(TestcontainersConfiguration.class)
 @ActiveProfiles("test")
 @DataJpaTest
-class IsInstanceTest {
+class EqualsHashcodeToStringTest {
 
 	@Autowired
 	private MyPurchasesRepo myPurchasesRepo;
@@ -39,5 +39,10 @@ class IsInstanceTest {
 	@Test
 	void testNotEquals(){
 		assertNotEquals(myPurchasesRepo.findById(1L).orElseThrow(), myPurchasesRepo.getReferenceById(2L));
+	}
+
+	@Test
+	void testToString(){
+		assertEquals("Purchase[id=2]", myPurchasesRepo.getReferenceById(2L).toString());
 	}
 }
