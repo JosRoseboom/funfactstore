@@ -28,10 +28,7 @@ class PurchaseService {
 	@Transactional
 	LocalDateTime purchaseFunFact(String username) {
 		AppUser buyer = appUserRepo.findByUsername(username).orElseThrow();
-		final List<Long> alreadyPurchasedFFIds = buyer.getPurchases().stream()
-				.map(Purchase::getFunFact)
-				.map(FunFact::getId)
-				.toList();
+		final List<Long> alreadyPurchasedFFIds = purchaseRepo.findPurchasedFunFactIdsByBuyer_Id(buyer.getId());
 		FunFact funFact = funFactRepo.findFirstByIdNotIn(alreadyPurchasedFFIds)
 				.orElseThrow(() -> new RuntimeException("Give this legend its money back: no more fun facts to purchase"));
 

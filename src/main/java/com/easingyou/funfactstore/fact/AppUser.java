@@ -1,10 +1,7 @@
 package com.easingyou.funfactstore.fact;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 
 @Entity
@@ -16,10 +13,6 @@ public class AppUser extends BaseEntity{
 	@Getter
 	@Column(nullable = false, unique = true)
 	private String email;
-
-	@Getter
-	@OneToMany(mappedBy = "buyer")
-	private List<Purchase> purchases;
 
 	public String getTopLevelDomain() {
 
