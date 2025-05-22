@@ -1,6 +1,7 @@
 package com.easingyou.funfactstore.dbtimer;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
@@ -13,21 +14,42 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Import(TestcontainersConfiguration.class)
 @SpringBootTest
-class PoolConnectionTimerTest {
+class ConnectionTimerTest {
 
 	@Autowired
 	private HikariDataSource dataSource;
 
 	@Test
 	void timePoolConnections() throws SQLException {
-		ConnectionTimer noPoolTimer = new ConnectionTimer() {
+
+		ConnectionTimer poolConnectionTimer = new ConnectionTimer() {
 			@Override
 			protected Connection getConnection() throws SQLException {
 				return dataSource.getConnection();
 			}
 		};
 
+		System.out.println("Pool connections stats:");
+		poolConnectionTimer.measure();
+		System.out.println();
+	}
+
+	@Test
+	void timeNoPoolConnections() {
+		final String url = "jdbc:postgresql://localhost:5445/funfactstore";
+		final String user = "ffsuser";
+		final String password = "secret";
+
+		ConnectionTimer noPoolTimer = new ConnectionTimer() {
+			@Override
+			protected Connection getConnection() throws SQLException {
+				return DriverManager.getConnection(url, user, password);
+			}
+		};
+
+		System.out.println("No pool connections stats:");
 		noPoolTimer.measure();
+		System.out.println();
 	}
 
 }

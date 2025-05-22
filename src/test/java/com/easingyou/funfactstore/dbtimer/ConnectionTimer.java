@@ -9,19 +9,31 @@ abstract class ConnectionTimer {
 
 	void measure(){
 
-		final LongSummaryStatistics connectionStats = LongStream.range(0, 1025)
-				.map(i -> timeConnection())
+		final LongSummaryStatistics stats = LongStream.range(0, 1025)
+				.map(i -> timeConnectionInNanos())
 				.skip(25)
 				.summaryStatistics();
 
-		System.out.println(connectionStats);
+		System.out.println("count=" + stats.getCount());
+		System.out.println("sum=" + asMs(stats.getSum()));
+		System.out.println("min=" + asMs(stats.getMin()));
+		System.out.println("average=" + formatMs(stats.getAverage() / 1_000_000.0));
+		System.out.println("max=" + asMs(stats.getMax()));
 	}
 
-	private long timeConnection() {
+	private String asMs(long nanos){
+		return formatMs(nanos / 1_000_000.0);
+	}
+
+	private String formatMs(double ms){
+		return String.format("%.6f ms", ms);
+	}
+
+	private long timeConnectionInNanos() {
 		try {
-			long start = System.currentTimeMillis();
+			long start = System.nanoTime();
 			Connection conn = getConnection();
-			long durationMs = (System.currentTimeMillis() - start);
+			long durationMs = (System.nanoTime() - start);
 
 			conn.close();
 			return durationMs;
