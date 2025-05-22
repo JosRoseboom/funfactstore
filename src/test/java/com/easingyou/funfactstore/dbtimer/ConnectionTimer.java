@@ -33,10 +33,10 @@ abstract class ConnectionTimer {
 		try {
 			long start = System.nanoTime();
 			Connection conn = getConnection();
-			long durationMs = (System.nanoTime() - start);
+			long durationNs = (System.nanoTime() - start);
 
 			conn.close();
-			return durationMs;
+			return durationNs;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return -1L;
