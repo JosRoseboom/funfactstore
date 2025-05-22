@@ -23,17 +23,17 @@ class ShopService {
 	@Transactional
 	Optional<ZonedDateTime> getLastPurchaseDate(String username) {
 
-		log.info("Check if criminal");
+		log.debug("Check if criminal");
 		if (externalAPI.isThisACriminal(username)){
 			throw new RuntimeException("Criminal entered the shop!!!!!");
 		}
 
-		log.info("User {} is not a criminal. Now look for last purchase date", username);
+		log.debug("User {} is not a criminal. Now look for last purchase date", username);
 
 		// Find the last purchase date
 		final Optional<ZonedDateTime> lastPurchase = purchaseRepo.findLastPurchaseDateByBuyer_Username(username);
 
-		log.info("Last purchase date for user {} is {}", username, lastPurchase);
+		log.debug("Last purchase date for user {} is {}", username, lastPurchase);
 		return lastPurchase;
 	}
 

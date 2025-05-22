@@ -20,17 +20,17 @@ class FactService {
 	}
 
 	List<FactDTO> findMyFacts(String username) {
-		log.info("Finding facts for user {}", username);
+		log.debug("Finding facts for user {}", username);
 
 		final List<Purchase> puchasesForUser = myPurchasesRepo.findByBuyer_Username(username);
 
-		log.info("Found {} facts for user {}", puchasesForUser.size(), username);
+		log.debug("Found {} facts for user {}", puchasesForUser.size(), username);
 
 		final List<FactDTO> factDTOS = puchasesForUser.stream()
 				.map(purchase -> new FactDTO(purchase.getPurchaseDate(), purchase.getFunFact().getFact(), purchase.getFunFact().getAdmin().getEmail()))
 				.toList();
 
-		log.info("Mapped entities to dtos. Returning {}", factDTOS);
+		log.debug("Mapped entities to dtos. Returning {}", factDTOS);
 		return factDTOS;
 	}
 }

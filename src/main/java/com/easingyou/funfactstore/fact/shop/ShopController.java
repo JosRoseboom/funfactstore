@@ -29,14 +29,14 @@ class ShopController {
 		@GetMapping
     String showShop(@RequestParam String username, Model model) {
 
-			log.info("Entering shopcontroller for user {}", username);
+			log.debug("Entering shopcontroller for user {}", username);
 
       model.addAttribute("username", username);
       model.addAttribute("lastPurchaseDate", shopService.getLastPurchaseDate(username).orElse(null));
 
-			log.info("Send email to the ceo to celebrate a potential customer!!!");
+			log.debug("Send email to the ceo to celebrate a potential customer!!!");
 			externalAPI.sendEmailToCEO();
-			log.info("End of shopcontroller, entering shop for user {}", username);
+			log.debug("End of shopcontroller, entering shop for user {}", username);
 
       return "shop";
     }
