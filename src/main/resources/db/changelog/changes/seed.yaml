@@ -42,15 +42,15 @@ databaseChangeLog:
             tableName: fun_fact
             columns:
               - column: { name: id, value: 1 }
-              - column: { name: fact, value: 'Octopuses have three hearts' }
-              - column: { name: explanation, value: 'Two pump blood to the gills, one pumps it to the rest of the body' }
+              - column: { name: fact, value: 'Sharks predate trees' }
+              - column: { name: explanation, value: 'Sharks have existed for about 400 million years; trees for only 350 million' }
               - column: { name: admin_id, value: 1 }
         - insert:
             tableName: fun_fact
             columns:
               - column: { name: id, value: 2 }
-              - column: { name: fact, value: 'Bananas are berries, but strawberries are not' }
-              - column: { name: explanation, value: 'Botanically, berries must have seeds inside and come from a single flower ovary' }
+              - column: { name: fact, value: 'Rats have the ability to laugh' }
+              - column: { name: explanation, value: 'They do so when tickled' }
               - column: { name: admin_id, value: 1 }
         - insert:
             tableName: fun_fact
@@ -70,15 +70,15 @@ databaseChangeLog:
             tableName: fun_fact
             columns:
               - column: { name: id, value: 5 }
-              - column: { name: fact, value: 'Wombat poop is cube-shaped' }
-              - column: { name: explanation, value: 'This shape prevents it from rolling away and helps mark territory' }
+              - column: { name: fact, value: 'The fear of long words is called Hippopotomonstrosesquippedaliophobia' }
+              - column: { name: explanation, value: 'The 36-letter word was first used in the first century BCE to criticise writers with an unreasonable penchant for long words' }
               - column: { name: admin_id, value: 2 }
         - insert:
             tableName: fun_fact
             columns:
               - column: { name: id, value: 6 }
-              - column: { name: fact, value: 'Sharks predate trees' }
-              - column: { name: explanation, value: 'Sharks have existed for about 400 million years; trees for only 350 million' }
+              - column: { name: fact, value: 'Octopuses have three hearts' }
+              - column: { name: explanation, value: 'Two pump blood to the gills, one pumps it to the rest of the body' }
               - column: { name: admin_id, value: 2 }
         - insert:
             tableName: fun_fact
@@ -117,34 +117,27 @@ databaseChangeLog:
             tableName: purchase
             columns:
               - column: { name: id, value: 1 }
-              - column: { name: fun_fact_id, value: 1 }
-              - column: { name: buyer_id, value: 4 }
-              - column: { name: purchase_date, valueDate: '2024-05-01T10:01:00' }
-        - insert:
-            tableName: purchase
-            columns:
-              - column: { name: id, value: 2 }
-              - column: { name: fun_fact_id, value: 4 }
+              - column: { name: fun_fact_id, value: 5 }
               - column: { name: buyer_id, value: 4 }
               - column: { name: purchase_date, valueDate: '2024-05-01T10:04:00' }
         - insert:
             tableName: purchase
             columns:
-              - column: { name: id, value: 3 }
+              - column: { name: id, value: 2 }
               - column: { name: fun_fact_id, value: 2 }
               - column: { name: buyer_id, value: 5 }
               - column: { name: purchase_date, valueDate: '2024-05-02T10:04:00' }
         - insert:
             tableName: purchase
             columns:
-              - column: { name: id, value: 4 }
+              - column: { name: id, value: 3 }
               - column: { name: fun_fact_id, value: 3 }
               - column: { name: buyer_id, value: 5 }
               - column: { name: purchase_date, valueDate: '2024-05-02T10:07:00' }
         - insert:
             tableName: purchase
             columns:
-              - column: { name: id, value: 5 }
+              - column: { name: id, value: 4 }
               - column: { name: fun_fact_id, value: 6 }
               - column: { name: buyer_id, value: 5 }
               - column: { name: purchase_date, valueDate: '2024-05-03T10:07:00' }
