@@ -16,7 +16,7 @@ public class HikariTimingConfig {
 
 			@Override
 			public void recordConnectionAcquiredNanos(long elapsedAcquiredNanos) {
-				log.debug("[{}] Connection acquired in {} ms ({} ns)",	poolName, elapsedAcquiredNanos / 1_000_000, elapsedAcquiredNanos);
+				log.debug("[{}] Connection acquired",	poolName);
 			}
 
 			@Override
