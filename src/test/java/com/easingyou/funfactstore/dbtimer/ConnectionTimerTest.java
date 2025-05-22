@@ -36,9 +36,9 @@ class ConnectionTimerTest {
 
 	@Test
 	void timeNoPoolConnections() {
-		final String url = "jdbc:postgresql://localhost:5445/funfactstore";
-		final String user = "ffsuser";
-		final String password = "secret";
+		final String url = dataSource.getJdbcUrl();
+		final String user = dataSource.getUsername();
+		final String password = dataSource.getPassword();
 
 		ConnectionTimer noPoolTimer = new ConnectionTimer() {
 			@Override
