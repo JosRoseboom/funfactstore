@@ -7,12 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.Getter;
 
 @Entity
 public class Purchase extends BaseEntity{
 
-	@Getter
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = false)
 	private FunFact funFact;
@@ -21,7 +19,6 @@ public class Purchase extends BaseEntity{
 	@JoinColumn(nullable = false)
 	private AppUser buyer;
 
-	@Getter
 	@Column(nullable = false)
 	private LocalDateTime purchaseDate;
 
@@ -32,5 +29,13 @@ public class Purchase extends BaseEntity{
 		this.funFact = funFact;
 		this.buyer = buyer;
 		this.purchaseDate = LocalDateTime.now();
+	}
+
+	public FunFact getFunFact() {
+		return funFact;
+	}
+
+	public LocalDateTime getPurchaseDate() {
+		return purchaseDate;
 	}
 }

@@ -12,13 +12,16 @@ import lombok.Getter;
 @MappedSuperclass
 public class BaseEntity{
 
-	@Getter
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
 	private Long id;
 
-	 // Equals() and hashCode() for entities should be consistent across all state transitions.
+	public Long getId() {
+		return id;
+	}
+
+	// Equals() and hashCode() for entities should be consistent across all state transitions.
 	 //
 	 // If an identifier is known before persisting (natural id like social security number or id that is known upfront), that identifier could be used as a base for equals and hashcode.
 	 //

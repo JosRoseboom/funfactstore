@@ -2,7 +2,6 @@ package com.easingyou.funfactstore.fact;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import lombok.Getter;
 
 @Entity
 public class AppUser extends BaseEntity{
@@ -10,7 +9,6 @@ public class AppUser extends BaseEntity{
 	@Column(nullable = false, unique = true)
 	private String username;
 
-	@Getter
 	@Column(nullable = false, unique = true)
 	private String email;
 
@@ -22,5 +20,7 @@ public class AppUser extends BaseEntity{
 		return domainPart.substring(lastDotIndex + 1).toLowerCase();
 	}
 
-
+	public String getEmail() {
+		return email;
+	}
 }

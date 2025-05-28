@@ -7,10 +7,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.Getter;
 
 @Entity
-@Getter
 public class FunFact extends BaseEntity {
 	private static final List<String> BAD_WORDS = List.of("boring", "stupid");
 
@@ -48,5 +46,13 @@ public class FunFact extends BaseEntity {
 		}
 
 		return result;
+	}
+
+	public String getFact() {
+		return fact;
+	}
+
+	public AppUser getAdmin() {
+		return admin;
 	}
 }
