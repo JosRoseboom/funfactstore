@@ -1,10 +1,12 @@
 package com.easingyou.funfactstore.fact;
 
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
@@ -17,9 +19,20 @@ public class FunFact extends BaseEntity {
 
 	private String explanation;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = false)
 	private AppUser admin;
+
+	public void sanitizeAdminBased() {
+
+	  List<String> adminBadWords = Map.of(
+	      "com", List.of("dumb", "boring"),
+	      "nl", List.of("stupid")
+	  ).getOrDefault(admin.getTopLevelDomain(), BAD_WORDS);
+
+	  sanitize(adminBadWords);
+
+	}
 
 	public void sanitize() {
 		sanitize(BAD_WORDS);

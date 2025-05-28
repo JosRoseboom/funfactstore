@@ -25,11 +25,11 @@ class AdminFactService {
 	void sanitizeFacts() {
 		log.info("fetch all facts");
 
-		final List<FunFact> allFacts = funFactRepo.findAll();
+		final List<FunFact> allFacts = funFactRepo.findAllWithAdmin();
 
 		log.info("Fetched {} facts, now sanitize them", allFacts.size());
 
-		allFacts.forEach(FunFact::sanitize);
+		allFacts.forEach(FunFact::sanitizeAdminBased);
 
 		log.info("Sanitized");
 	}
