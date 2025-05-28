@@ -21,7 +21,7 @@ class AdminFactServiceTest {
     private AdminFactService adminFactService;
 
     @Test
-    void findAllFactsWithExplanation_shouldReturnFactsWithExplanations() {
+    void sanitize() {
         adminFactService.sanitizeFacts();
     }
 }
