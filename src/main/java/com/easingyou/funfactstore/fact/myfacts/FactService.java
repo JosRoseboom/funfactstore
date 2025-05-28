@@ -22,11 +22,11 @@ class FactService {
 	List<FactDTO> findMyFacts(String username) {
 		log.debug("Finding facts for user {}", username);
 
-		final List<Purchase> puchasesForUser = myPurchasesRepo.findByBuyer_Username(username);
+		final List<Purchase> purchasesForUser = myPurchasesRepo.findByBuyer_Username(username);
 
-		log.debug("Found {} facts for user {}", puchasesForUser.size(), username);
+		log.debug("Found {} facts for user {}", purchasesForUser.size(), username);
 
-		final List<FactDTO> factDTOS = puchasesForUser.stream()
+		final List<FactDTO> factDTOS = purchasesForUser.stream()
 				.map(purchase -> new FactDTO(purchase.getPurchaseDate(), purchase.getFunFact().getFact(), purchase.getFunFact().getAdmin().getEmail()))
 				.toList();
 
