@@ -21,8 +21,8 @@ class EqualsHashcodeToStringTest {
 
 	@Test
 	void testHashcodeReference(){
-		final int hashCodeRef = myPurchasesRepo.getReferenceById(5L).hashCode();
-		final int hashCodeInstantiated = myPurchasesRepo.findById(5L).orElseThrow().hashCode();
+		final int hashCodeRef = myPurchasesRepo.getReferenceById(4L).hashCode();
+		final int hashCodeInstantiated = myPurchasesRepo.findById(4L).orElseThrow().hashCode();
 		assertEquals(hashCodeRef, hashCodeInstantiated);
 	}
 
