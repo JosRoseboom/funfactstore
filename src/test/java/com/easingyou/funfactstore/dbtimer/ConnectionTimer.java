@@ -14,11 +14,11 @@ abstract class ConnectionTimer {
 				.skip(25)
 				.summaryStatistics();
 
-		System.out.println("count=" + stats.getCount());
-		System.out.println("sum=" + asMs(stats.getSum()));
-		System.out.println("min=" + asMs(stats.getMin()));
-		System.out.println("average=" + formatMs(stats.getAverage() / 1_000_000.0));
-		System.out.println("max=" + asMs(stats.getMax()));
+		System.out.println("count\t\t\t" + stats.getCount());
+		System.out.println("sum\t\t\t\t" + asMs(stats.getSum()));
+		System.out.println("min\t\t\t\t" + asMs(stats.getMin()));
+		System.out.println("average\t\t"	 + formatMs(stats.getAverage() / 1_000_000.0));
+		System.out.println("max\t\t\t\t" + asMs(stats.getMax()));
 	}
 
 	private String asMs(long nanos){
