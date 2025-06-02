@@ -29,8 +29,6 @@ class ShopService {
 		}
 
 		log.debug("User {} is not a criminal. Now look for last purchase date", username);
-
-		// Find the last purchase date
 		final Optional<ZonedDateTime> lastPurchase = purchaseRepo.findLastPurchaseDateByBuyer_Username(username);
 
 		log.debug("Last purchase date for user {} is {}", username, lastPurchase);

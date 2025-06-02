@@ -29,7 +29,7 @@ class ConnectionTimerTest {
 			}
 		};
 
-		System.out.println("Pool connections stats:");
+		System.out.println("\nPool (Hikari) connections stats:");
 		poolConnectionTimer.measure();
 		System.out.println();
 	}
@@ -47,7 +47,7 @@ class ConnectionTimerTest {
 			}
 		};
 
-		System.out.println("No pool connections stats:");
+		System.out.println("\nNo pool (DriverManager) connections stats:");
 		noPoolTimer.measure();
 		System.out.println();
 	}
