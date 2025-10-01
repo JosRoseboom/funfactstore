@@ -42,8 +42,8 @@ databaseChangeLog:
             tableName: fun_fact
             columns:
               - column: { name: id, value: 1 }
-              - column: { name: fact, value: 'Sharks predate trees' }
-              - column: { name: explanation, value: 'Sharks have existed for about 400 million years; trees for only 350 million' }
+              - column: { name: fact, value: 'Octopuses have three hearts' }
+              - column: { name: explanation, value: 'Two pump blood to the gills, one pumps it to the rest of the body' }
               - column: { name: admin_id, value: 1 }
         - insert:
             tableName: fun_fact
@@ -77,8 +77,8 @@ databaseChangeLog:
             tableName: fun_fact
             columns:
               - column: { name: id, value: 6 }
-              - column: { name: fact, value: 'Octopuses have three hearts' }
-              - column: { name: explanation, value: 'Two pump blood to the gills, one pumps it to the rest of the body' }
+              - column: { name: fact, value: 'Sharks predate trees' }
+              - column: { name: explanation, value: 'Sharks have existed for about 400 million years; trees for only 350 million' }
               - column: { name: admin_id, value: 2 }
         - insert:
             tableName: fun_fact
