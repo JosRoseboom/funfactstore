@@ -6,21 +6,21 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.context.annotation.Import;
 
 import com.easingyou.funfactstore.TestcontainersConfiguration;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Import(TestcontainersConfiguration.class)
-@SpringBootTest
+@DataJpaTest
 class ConnectionTimerTest {
 
 	@Autowired
 	private HikariDataSource dataSource;
 
 	@Test
-	void timePoolConnections() throws SQLException {
+	void timePoolConnections(){
 
 		ConnectionTimer poolConnectionTimer = new ConnectionTimer() {
 			@Override
