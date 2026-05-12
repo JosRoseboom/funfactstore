@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class FunFact extends BaseEntity {
+	private static final Logger LOGGER = LoggerFactory.getLogger(FunFact.class);
 	private static final List<String> BAD_WORDS = List.of("boring", "stupid");
 
 	@Column(nullable = false)
