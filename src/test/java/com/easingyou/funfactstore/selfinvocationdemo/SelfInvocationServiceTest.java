@@ -25,6 +25,11 @@ class SelfInvocationServiceTest {
 	}
 
 	@Test
+	void isInTransactionProxyCall() {
+		assertTrue(selfInvocationService.isInTransactionProxyCall());
+	}
+
+	@Test
 	void isInTransaction() {
 		assertTrue(selfInvocationService.isInTransaction());
 	}
