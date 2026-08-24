@@ -115,12 +115,6 @@
 			<artifactId>testcontainers-postgresql</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>io.hypersistence</groupId>
-			<artifactId>hypersistence-optimizer</artifactId>
-			<version>2.13.1</version>
-			<classifier>jakarta</classifier>
-		</dependency>
 	</dependencies>
 
 	<build>
