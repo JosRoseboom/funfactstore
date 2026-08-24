@@ -6,3 +6,4 @@ Other links mentioned in the talk:
 
 - My LinkedIn: https://www.linkedin.com/in/jos-roseboom-75508b11/
 - Slides: https://easingyou.com/whenORMbecomesOMG/
+- Hypersistence Optimizer (50% discount first year): https://hypersistence.teachable.com/p/hypersistence-optimizer?coupon_code=JSRSBM50FY&product_id=6617208&affcode=172599_gyck-qkx
